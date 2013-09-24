@@ -1,0 +1,5 @@
+%h1 Entries
+- if @entries.any?
+  %pre= @entries.join("\n")
+- else
+  = haml :_no_entries
