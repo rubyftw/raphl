@@ -3,6 +3,6 @@
   %ul.list-group
     - @entries.each do |entry|
       %li.list-group-item= entry
-  %a{ href: "/winner", type: "submit", class: "btn btn-success btn-lg", style: "width: 100%" } Pick a Winner
+  %a{ href: "/#@raffle/winner", type: "submit", class: "btn btn-success btn-lg", style: "width: 100%" } Pick a Winner
 - else
   = haml :_no_entries

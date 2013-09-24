@@ -1,3 +1,5 @@
+require 'raphl/app'
+
 module Raphl
-  autoload :App,      "raphl/app.rb"
+  autoload :TrueRandom, "raphl/true_random.rb"
 end
