@@ -6,7 +6,12 @@ GEM
     eventmachine (1.0.3)
     haml (4.0.3)
       tilt
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     method_source (0.8.2)
+    multi_json (1.8.0)
+    multi_xml (0.5.5)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -33,6 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  httparty
   pry
   redis
   redis-namespace

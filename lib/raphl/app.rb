@@ -44,12 +44,19 @@ module Raphl
 
     # Pick a winner
     get "/winner" do
-      if $redis.smembers("entries").any?
-        @winner = $redis.srandmember("entries")
+      @entries = $redis.smembers("entries")
+      if @entries.any?
+        @winner = true_random_select(@entries)
         haml :winner
       else
         haml :no_entries
       end
+    end
+
+    def true_random_select(collection)
+      max = collection.count
+      entry_index = HTTParty.get("http://www.random.org/integers/?num=1&min=0&max=#{ max-1 }&col=1&base=10&format=plain").to_s.to_i
+      collection[entry_index]
     end
   end
 end
