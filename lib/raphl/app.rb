@@ -45,12 +45,9 @@ module Raphl
     # Pick a winner
     get "/winner" do
       @entries = $redis.smembers("entries")
-      if @entries.any?
-        @winner = true_random_select(@entries)
-        haml :winner
-      else
-        haml :no_entries
-      end
+      @winner = true_random_select(@entries)
+      haml :winner
+      haml :no_entries
     end
 
     def true_random_select(collection)
