@@ -1,4 +1,24 @@
-%h1 Raffle Entry
-- if session[:message]
-  .alert.alert-warning= session.delete(:message)
-= haml :_entry_form
+.container
+  .header
+    %h3.text-muted Raphl
+  .jumbotron{ style: "background: url(http://rubyftw.s3.amazonaws.com/raphl.jpg); background-size: 100%; background-position: center; color: #fff; text-shadow: 1px 1px 5px #000" }
+    %h1 Raffle anything
+    %p.intro Go to or create a raffle by entering a code:
+    %form.form-inline{ action: "/new", method: "post" }
+      .form-group
+        %input.form-control.input-lg{ type: "text", name: "raffle", placeholder: "Raffle code" }
+      %button.btn.btn-lg.btn-success{ type: "submit" } Go to Raffle
+  .row.marketing
+    .col-lg-6
+      %h4 Truly Random
+      %p Random number generation is provided by <a href="http://random.org">Random.org</a> using atmospheric data for a truly random selection.
+    .col-lg-6
+      %h4 Super Simple
+      %p
+        Just choose a raffle code! Go to <code>#{@domain}/CODE</code> to get your entry form.
+        View the entries by going to <code>#{@domain}/CODE/entries</code>.
+        Pick a winner by going to <code>#{@domain}/CODE/winner</code>.
+.footer
+  %hr
+  .container
+    %p By <a href="http://rubyftw.org">Ruby FTW</a> / <a href="https://github.com/rubyftw/raphl">Source on GitHub</a>

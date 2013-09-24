@@ -1,0 +1,4 @@
+%h1 Raffle Entry
+- if session[:message]
+  .alert.alert-warning= session.delete(:message)
+= haml :_entry_form

@@ -7,7 +7,7 @@ module Raphl
       before { @raffle = params[:raffle] }
 
       # Entry Form
-      get("/?") { haml :index }
+      get("/?") { haml :enter }
       get("/thanks/?") { haml :thanks }
 
       # Form Submission
