@@ -15,7 +15,6 @@ module Raphl
     end
 
     def fallback_random(min, max)
-      puts "falling back to Random#rand"
       Random.rand(min..max)
     end
 

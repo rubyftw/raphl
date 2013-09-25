@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'sinatra/namespace'
 
-require 'raphl/configuration'
-require 'raphl/raffle'
+require 'raphl/app/configuration'
+require 'raphl/app/routes/raffle'
 
 module Raphl
   class App < Sinatra::Application

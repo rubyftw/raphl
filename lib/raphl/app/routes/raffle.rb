@@ -7,36 +7,36 @@ module Raphl
       before { @raffle = params[:raffle] }
 
       # Entry Form
-      get("/?") { haml :enter }
+      get("/?")        { haml :enter }
       get("/thanks/?") { haml :thanks }
 
       # Form Submission
       post "/enter/?" do
-        begin
-          params.fetch("entry").fetch("present")
-          email = session[:email] = params.fetch("entry").fetch("email")
+        @entry = Entry.new({
+          email:    params["entry"]["email"],
+          raffle:   @raffle,
+          terms:    !!params["entry"]["terms"]
+        })
 
-          $redis.sadd("#@raffle:entries", email)
-
+        if @entry.save
           redirect to("/#@raffle/thanks")
-        rescue KeyError
-          session[:message] = "Make sure you enter your email address and check the box."
+        else
+          session[:message] = "Make sure you enter your email address and accept the terms."
           redirect to("/#@raffle")
         end
       end
 
       # View Entries
       get "/entries/?" do
-        @entries = $redis.smembers("#@raffle:entries")
+        @entries = Entry.all(@raffle)
 
         haml :entries
       end
 
       # Pick a winner
       get "/winner/?" do
-        @entries = $redis.smembers("#@raffle:entries")
-
-        @winner = TrueRandom.select(@entries)
+        @entries = Entry.all(@raffle)
+        @winner  = Entry.select(@raffle)
 
         haml :winner
       end

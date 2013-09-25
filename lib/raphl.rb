@@ -1,3 +1,4 @@
+require 'raphl/models'
 require 'raphl/app'
 
 module Raphl
