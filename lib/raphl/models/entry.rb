@@ -27,6 +27,7 @@ module Raphl
     def self.key(subkey = nil)
       key  = "entries"
       key << ":#{ subkey }" if subkey
+      key
     end
 
     def self.redis
